@@ -1,9 +1,11 @@
 FROM ubuntu
 
-RUN apt-get update && \
-    apt-get install -y cmatrix && \
-    rm -rf /var/lib/apt/lists/*
+## for apt to be noninteractive
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NONINTERACTIVE_SEEN true
 
+RUN apt update && \
+    apt install -y cmatrix
 
 CMD ["cmatrix"] 
 
